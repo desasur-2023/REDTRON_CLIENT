@@ -1,11 +1,13 @@
+'use client'
 import Image from "next/image";
+import Logo from "/app/assets/logo.png"
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
+    <main>
       <Image
-        className=""
-        src="/app/assets/logo.png"
+       
+        src={Logo}
         alt="REDTRON Logo"
         width={191}
         height={182}
@@ -13,8 +15,8 @@ export default function Home() {
       />
       <h2>BIENVENIDO!</h2>
       <form action="">
-        <input type="text" placeholder="Email" />
-        <input type="text" placeholder="Password" />
+        <input type="email" placeholder="Email" />
+        <input type="password" placeholder="Password" />
 
         <a href="">Olvide mi Contraseña</a>
 
