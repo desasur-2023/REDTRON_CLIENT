@@ -31,7 +31,7 @@ export default function Navbar() {
         </svg>
         usuarios
       </Link>
-      <Link className={css.ppal} href={"/home"}>
+      <Link className={css.ppal} href={""}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 24 24"
