@@ -98,8 +98,13 @@ export default function Home() {
 
     <main className="jc-sa">
       <Header />
+
       <div>
         <input type="text" placeholder="buscar..." />
+        <button className="btn-create">
+         <span>+</span>
+          CREAR NUEVO
+        </button>
         <div className="users">
           <Link href={"/"}>
             <article>
