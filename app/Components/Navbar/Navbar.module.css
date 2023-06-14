@@ -3,7 +3,7 @@
     height: 70px;
     background-color: #580107;
     color: #f3f3f3;
-    position: absolute;
+    position: fixed;
     z-index: 999999;
     bottom: 0;
     display: flex;

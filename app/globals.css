@@ -115,29 +115,54 @@ a {
   font-weight: 300;
 }
 
+article {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+}
+
+h2 {
+  margin: 0;
+  flex-direction: column;
+  display: flex;
+}
+
+h2 span {
+  font-weight: 200;
+  font-size: 12pt;
+  margin: 0;
+  text-align: right;
+}
+
+div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .align-right {
   text-align: right;
 }
 
-.flex-right{
+.flex-right {
   display: flex;
-    justify-content: flex-end;
-    gap: 20px;
+  justify-content: flex-end;
+  gap: 20px;
 }
 
 .align-left {
   text-align: left;
 }
 
-.flex-left{
+.flex-left {
   display: flex;
-    justify-content: flex-start;
-    gap: 20px;
+  justify-content: flex-start;
+  gap: 20px;
 }
 
 .jc-sa {
   justify-content: space-around;
-  padding: 110px 0;
 }
 
 .subrayado {
@@ -146,9 +171,20 @@ a {
   padding-bottom: 10px;
 }
 
-.column{
+.column {
   display: flex;
   flex-direction: column;
   gap: 20px;
   margin: 40px 0;
+}
+
+.users {
+  padding: 60px 0;
+  display: flex;
+  gap: 70px;
+  justify-content: center;
+  flex-direction: row;
+  width: 40%;
+  flex-wrap: wrap;
+  margin: 0 auto;
 }
