@@ -115,6 +115,10 @@ a {
   font-weight: 300;
 }
 
+a:hover{
+  transform: scale(1.05);
+}
+
 article {
   display: flex;
   flex-direction: row;
