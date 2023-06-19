@@ -1,7 +1,7 @@
 import css from "./Navbar.module.css";
 import Link from "next/link";
 
-export default function Navbar() {
+const Navbar = () => {
   return (
     <nav className={css.navbar}>
       <Link href={"/home"}>
@@ -74,3 +74,6 @@ export default function Navbar() {
     </nav>
   );
 }
+
+
+export default Navbar
