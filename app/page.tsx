@@ -99,7 +99,7 @@ export default function Home() {
     <main className="jc-sa">
       <Header />
 
-      <div>
+      <div className="ai-ce">
         <input type="text" placeholder="buscar..." />
         <button className="btn-create">
          <span>+</span>
