@@ -4,7 +4,7 @@ import Link from "next/link";
 const Page = () => {
   return (
     <main className="jc-sa">
-    <Header />
+    
 
     <div>
       <input type="text" placeholder="buscar..." />
