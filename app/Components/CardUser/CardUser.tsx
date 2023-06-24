@@ -8,7 +8,7 @@ export const CardUser = ({ onClose }) => {
   return (
     <div className={css.container} onClick={(e) => e.stopPropagation()} >
       <div>
-        <input type="button" className={css.close} value="X" onClick={(e) => onClose()} />
+        <input type="button" className={css.close} value="X" onClick={() => onClose()} />
       </div>
 
       <div className={css.box}>

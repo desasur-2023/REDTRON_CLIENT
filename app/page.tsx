@@ -25,7 +25,7 @@ export default function Home() {
     });
   };
   const adminLogin = async (input) => {
-    const userDb = await fetch("http://localhost:3001/users/login", {
+    const userDb = await fetch("http://localhost:3001/auth/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

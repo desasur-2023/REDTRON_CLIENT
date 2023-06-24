@@ -21,7 +21,7 @@ const openModal =()=> setOpen(!open);
 console.log(open)
 
   return (
-    <main>
+    <div>
       {open && open ? (        
         <Modal onClose={openModal}>
           <CardUser            
@@ -32,14 +32,14 @@ console.log(open)
         <main className="jc-sa ">
           <Header setOpen={openModal} />
           <div>
-            <h1 className="align-right subrayado">$1.234.567</h1>
+            <h2 className="align-right subrayado">$5.974.100</h2>
             <span>GANANCIAS</span>
-            <h1 className="align-right subrayado">$1.234.567</h1>
+            <h2 className="align-right subrayado">$1.234.567</h2>
             <span>PERDIDAS</span>
             <br />
             <div className="column">
               <div className={css.buttons_select}>
-              <button className="flex-right">
+              <button className="flex-right" onClick={()=> router.push('/Casinos')}>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 24 24"
@@ -102,6 +102,6 @@ console.log(open)
           </div>
         </main>
       )}
-    </main>
+    </div>
   );
 }
