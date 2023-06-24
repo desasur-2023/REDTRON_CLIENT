@@ -219,3 +219,9 @@ div {
 .btn-create span:hover{
   transform: scale(1.06);
 }
+
+.casinos img{
+  background-color: #580107;
+  border-radius: 100%;
+  padding: 10px;
+}
