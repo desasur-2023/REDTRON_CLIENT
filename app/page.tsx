@@ -72,7 +72,7 @@ export default function Home() {
           onChange={handlerInputChange}
           required
         />
-        <a className="align-right" onClick={()=> router.push('/Password')}>
+        <a className="align-right" href="">
           Olvide mi Contraseña
         </a>
         <button type="submit">ENTRAR</button>

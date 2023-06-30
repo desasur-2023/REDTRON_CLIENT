@@ -28,7 +28,7 @@ export const CardUser = ({ onClose }) => {
         </div>
         <div className={css.card_detail_info}>
           <h4 className={css.fonte}>Telefono: </h4>
-          <h4> {userDb.phone}</h4>
+          <h4> {userDb?.phone.toString()}</h4>
         </div>
         <div className={css.card_detail_info}>
           <h4 className={css.fonte}>Rol: </h4>

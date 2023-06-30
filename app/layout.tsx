@@ -5,6 +5,7 @@ import { Inter } from 'next/font/google'
 import Navbar from './Components/Navbar/Navbar'
 import { UserProvider } from './UserContext/UserProvider'
 import { usePathname } from 'next/navigation'
+import { UsersProvider } from './UsersContext/UsersProvider'
 
 
 const inter = Inter({ subsets: ['latin'] })
@@ -24,8 +25,10 @@ export default function RootLayout({ children }) {
       </head>
       <body className={inter.className}>
         <UserProvider>
+        <UsersProvider>
         {children}
         {path !== '/' ? <Navbar /> : null }
+        </UsersProvider>
         </UserProvider>
       </body>
     </html>

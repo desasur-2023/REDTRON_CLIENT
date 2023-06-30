@@ -14,28 +14,21 @@ ul::selection,
 li::selection,
 span::selection {
   color: #f3f3f3;
-  background-color: #580107;
+  background-color: var(--color-secondary);
 }
 
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
+  --color-primary: #fbb92d;
+  --color-primary-ligth: #fbba2d58;
+  --color-secondary: #121212;
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+ 
 }
-
 body {
-  background: url("./assets/bg.png") #fbb92d;
+  background: url("./assets/bg.png") var(--color-primary);
   background-repeat: repeat;
   font-family: "Roboto", sans-serif;
-  color: #580107;
+  color: var(--color-secondary);
   margin: 0 auto;
   display: flex;
   place-items: center;
@@ -73,7 +66,7 @@ button {
   font-weight: 900;
   font-style: italic;
   color: #f3f3f3;
-  background-color: #580107 !important;
+  background-color: var(--color-secondary) !important;
   cursor: pointer;
   transition: border-color 0.25s;
 }
@@ -96,7 +89,7 @@ a:hover, button:hover {
   opacity: 0.9;
 }
 input {
-  border: #580107 1px solid;
+  border: var(--color-secondary) 1px solid;
   border-radius: 10px;
   padding: 10px;
 }
@@ -112,7 +105,7 @@ form {
 a {
   cursor: pointer;
   text-decoration: none;
-  color: #580107;
+  color: var(--color-secondary);
   font-size: 10pt;
   font-weight: 300;
 }
@@ -174,7 +167,7 @@ h2 span {
 }
 
 .subrayado {
-  border-bottom: #580107 2px solid;
+  border-bottom: var(--color-secondary) 2px solid;
   padding-left: 200px;
   padding-bottom: 10px;
 }
@@ -210,7 +203,7 @@ h2 span {
   padding: 20px 30px;
   border-radius: 100%;
   border: #fbb92d 5px solid;
-  background-color: #580107;
+  background-color: var(--color-secondary);
   color: #f3f3f3;
   position: relative;
   left: -40px;
@@ -228,7 +221,7 @@ h2 span {
   left: 0;
   width: 100%;
   height: 98vh;
-  background-color: rgb(127 112 33 / 48%);
+  background-color: var(--color-primary-ligth);
   display: flex;
   justify-content: center;
   align-items: center;
