@@ -20,7 +20,7 @@ const Card = ({
     password: "",
     role: "",
   });
-  console.log(userEdit)
+  console.log(userEdit);
   const onClose = () => {
     setOpen(!open);
   };
@@ -44,54 +44,90 @@ const Card = ({
         authorization: "Bearer " + tokenId,
       },
       body: JSON.stringify({
-        status:"DISABLED"
-        }),
+        status: "DISABLED",
+      }),
     });
     reload();
     onCloseTwo();
   };
 
-  const handlerInputChange = ({target:{name, value}}: React.ChangeEvent<HTMLInputElement>) => {
+  const handlerInputChange = ({
+    target: { name, value },
+  }: React.ChangeEvent<HTMLInputElement>) => {
     setUserEdit({
-        ...userEdit,
-        [name]: value
-    })
+      ...userEdit,
+      [name]: value,
+    });
   };
-  const handlerPercentChange = ({target:{name, value}}: React.ChangeEvent<HTMLInputElement>) => {
+  const handlerPercentChange = ({
+    target: { name, value },
+  }: React.ChangeEvent<HTMLInputElement>) => {
     setUserEdit({
-        ...userEdit,
-        [name]: parseInt(value)
-    })
+      ...userEdit,
+      [name]: parseInt(value),
+    });
   };
 
-
-const editUser = async(user) => {
+  const editUser = async (user) => {
     const response = await fetch(`http://localhost:3001/users/${id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
         authorization: "Bearer " + tokenId,
       },
-      body: JSON.stringify(user)
+      body: JSON.stringify(user),
     });
-};
-  const handlerSubmit = (e:React.FormEvent<HTMLFormElement>)=>{
+  };
+  const handlerSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     editUser(userEdit);
     reload();
     onClose();
-    onCloseTwo()
-  }
+    onCloseTwo();
+  };
   return (
     <div className={css.container} onClick={(e) => e.stopPropagation()}>
       {open ? (
         <div>
-          <form  className={css.form_container}  onSubmit={handlerSubmit}>
-            <input type="text" name="phone" value={userEdit.phone} onChange={handlerInputChange} placeholder="Telefono"/>
-            <input type="email" name="email" value={userEdit.email} onChange={handlerInputChange} placeholder="Correo"/>
-            <input type="number" min={1} name="percent_agreement" value={userEdit.percent_agreement} onChange={handlerPercentChange} placeholder="Percent Agreement"/>
-            <input type="text" name="password" value={userEdit.password} onChange={handlerInputChange} placeholder="Contraseña"/>
-            <input type="text" name="role" value={userEdit.role} autoCapitalize="characters" onChange={handlerInputChange} placeholder="Rol"required/>
+          <form className={css.form_container} onSubmit={handlerSubmit}>
+            <input
+              type="text"
+              name="phone"
+              value={userEdit.phone}
+              onChange={handlerInputChange}
+              placeholder="Telefono"
+            />
+            <input
+              type="email"
+              name="email"
+              value={userEdit.email}
+              onChange={handlerInputChange}
+              placeholder="Correo"
+            />
+            <input
+              type="number"
+              min={1}
+              name="percent_agreement"
+              value={userEdit.percent_agreement}
+              onChange={handlerPercentChange}
+              placeholder="Percent Agreement"
+            />
+            <input
+              type="text"
+              name="password"
+              value={userEdit.password}
+              onChange={handlerInputChange}
+              placeholder="Contraseña"
+            />
+            <input
+              type="text"
+              name="role"
+              value={userEdit.role}
+              autoCapitalize="characters"
+              onChange={handlerInputChange}
+              placeholder="Rol"
+              required
+            />
             <button type="submit">Guardar cambios</button>
           </form>
         </div>
