@@ -1,6 +1,6 @@
 .container{
-    background-color: #580107;
-    color: #fbb92d;
+    background-color: var(--color-secondary);
+    color: var(--color-primary);
     border-radius: 2rem;
     display: flex;
     flex-direction: column;

@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import css from "./CreateCashier.module.css";
-const CreateCashier = ({ tokenId, onClose }) => {
+const CreateCashier = ({ tokenId, onClose, reload }) => {
   const [input, setInput] = useState({
     username: "",
     phone: "",
@@ -42,6 +42,7 @@ const CreateCashier = ({ tokenId, onClose }) => {
       percent_agreement: 0,
     });
     onClose();
+    reload();
   };
   return (
     <div className={css.container}>
