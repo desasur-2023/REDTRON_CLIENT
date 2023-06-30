@@ -10,20 +10,22 @@ import { useRouter } from "next/navigation";
 import Card from "../Components/Card/Card";
 const Page = () => {
   const router = useRouter();
-  const { usersDb,charge,setCharge } = useUsersContext();
+  const { usersDb, charge, setCharge } = useUsersContext();
   const { userDb } = useUserContext();
   const tokenId = userDb?.token;
   const [open, setOpen] = React.useState(false);
   const [openUser, setOpenUser] = React.useState(false);
   const [userSelected, setUserSelected] = React.useState(null);
-  console.log(usersDb)
+  console.log(usersDb);
   const onClose = () => {
     setOpen(!open);
   };
   const onCloseTwo = () => {
     setOpenUser(!openUser);
   };
-  const reload = () => {setCharge(!charge)};
+  const reload = () => {
+    setCharge(!charge);
+  };
   useEffect(() => {
     userDb && userDb.role === "ADMIN" ? null : router.push("/");
   }, [router, userDb]);
@@ -38,20 +40,27 @@ const Page = () => {
       {open ? (
         <Modal onClose={onClose}>
           <div className="div">
-            <CreateCashier tokenId={tokenId} onClose={onClose} reload={reload} />
+            <CreateCashier
+              tokenId={tokenId}
+              onClose={onClose}
+              reload={reload}
+            />
           </div>
         </Modal>
       ) : openUser ? (
         <Modal onClose={onCloseTwo}>
           <div className="div">
             <Card
-                tokenId={tokenId}
-                username={userSelected.username}
-                id={userSelected.id}
-                phone={userSelected.phone}
-                email={userSelected.email}
-                percent_agreement={userSelected.percent_agreement}
-                role={userSelected.role} reload={reload} onCloseTwo={onCloseTwo}            />
+              tokenId={tokenId}
+              username={userSelected.username}
+              id={userSelected.id}
+              phone={userSelected.phone}
+              email={userSelected.email}
+              percent_agreement={userSelected.percent_agreement}
+              role={userSelected.role}
+              reload={reload}
+              onCloseTwo={onCloseTwo}
+            />
           </div>
         </Modal>
       ) : (
@@ -72,8 +81,10 @@ const Page = () => {
                   <h1>
                     <FaUser />
                   </h1>
-                  <h2>{user.username}</h2>
-                  <h3>{user.role}</h3>
+                  <div className="cashier-name">
+                    <h2>{user.username}</h2>
+                    <h3>{user.role}</h3>
+                  </div>
                 </li>
               ))}
             </ul>
