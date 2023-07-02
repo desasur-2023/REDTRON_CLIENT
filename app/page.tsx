@@ -19,7 +19,7 @@ export default function Home() {
   const adminLogin = async (input) => {
     console.log(input);
     
-    await fetch("http://localhost:3001/users/login", {
+    await fetch("http://localhost:3001/auth/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
