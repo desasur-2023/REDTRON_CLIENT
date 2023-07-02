@@ -21,12 +21,11 @@ span::selection {
   --color-primary: #fbb92d;
   --color-primary-ligth: #fbba2d58;
   --color-secondary: #1d1d1d;
-
+  --bg--url:url("http://eugenioaragon.com.ar/redtron/bgcasino.jpg")
  
 }
 body {
-  background: url("./assets/bg.png") var(--color-primary);
-  background-repeat: repeat;
+  background-image: linear-gradient(45deg, rgb(240, 99, 99) 0%, rgb(240, 99, 99) 11%,rgb(230, 115, 107) 11%, rgb(230, 115, 107) 24%,rgb(220, 132, 114) 24%, rgb(220, 132, 114) 29%,rgb(210, 148, 122) 29%, rgb(210, 148, 122) 45%,rgb(199, 164, 129) 45%, rgb(199, 164, 129) 87%,rgb(189, 181, 137) 87%, rgb(189, 181, 137) 90%,rgb(179, 197, 144) 90%, rgb(179, 197, 144) 100%),linear-gradient(67.5deg, rgb(240, 99, 99) 0%, rgb(240, 99, 99) 11%,rgb(230, 115, 107) 11%, rgb(230, 115, 107) 24%,rgb(220, 132, 114) 24%, rgb(220, 132, 114) 29%,rgb(210, 148, 122) 29%, rgb(210, 148, 122) 45%,rgb(199, 164, 129) 45%, rgb(199, 164, 129) 87%,rgb(189, 181, 137) 87%, rgb(189, 181, 137) 90%,rgb(179, 197, 144) 90%, rgb(179, 197, 144) 100%),linear-gradient(135deg, rgb(240, 99, 99) 0%, rgb(240, 99, 99) 11%,rgb(230, 115, 107) 11%, rgb(230, 115, 107) 24%,rgb(220, 132, 114) 24%, rgb(220, 132, 114) 29%,rgb(210, 148, 122) 29%, rgb(210, 148, 122) 45%,rgb(199, 164, 129) 45%, rgb(199, 164, 129) 87%,rgb(189, 181, 137) 87%, rgb(189, 181, 137) 90%,rgb(179, 197, 144) 90%, rgb(179, 197, 144) 100%),linear-gradient(90deg, rgb(156, 174, 7),rgb(129, 53, 44)); background-blend-mode:overlay,overlay,overlay,normal;
   font-family: "Roboto", sans-serif;
   color: var(--color-secondary);
   margin: 0 auto;
@@ -225,4 +224,10 @@ h2 span {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.swal-overlay {
+
+  z-index: 9999999999;
+
 }

@@ -72,7 +72,7 @@ const Page = () => {
           </button>
           <div className="users">
             <ul className={css.container_cashiers}>
-              {usersDb.map((user) => (
+              {usersDb?.map((user) => (
                 <li
                   key={user.id}
                   className={css.cashiers_data}

@@ -1,6 +1,9 @@
 "use client";
 import React, { useState } from "react";
 import css from "./CreateCashier.module.css";
+import swal from 'sweetalert';
+
+
 const CreateCashier = ({ tokenId, onClose, reload }) => {
   const [input, setInput] = useState({
     username: "",
@@ -27,14 +30,20 @@ const CreateCashier = ({ tokenId, onClose, reload }) => {
     });
   };
 
+
   const handlerSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
       createCashier(tokenId, input);
     } catch (error) {
-      alert(error.message);
+      swal(error.message);
     }
-    alert("Cajero creado");
+    swal({
+      title: 'Cajero creado',
+      icon: 'success',
+
+    });
+
     setInput({
       username: "",
       phone: "",
@@ -44,6 +53,9 @@ const CreateCashier = ({ tokenId, onClose, reload }) => {
     onClose();
     reload();
   };
+
+
+
   return (
     <div className={css.container}>
       <h2>Crear Cajero</h2>
