@@ -1,0 +1,29 @@
+.container_cashiers{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 2rem;
+   justify-content: center;
+   align-items: center;
+    width: 90vh;   
+   
+}
+.cashiers_data{
+    display: flex;
+    flex-direction: column;
+    background-color: var(--color-primary-ligth);
+    border-radius: 1.5rem;
+    padding: 1rem;
+    justify-content: center;
+}
+.cashiers_data h1{
+    display: flex;
+    justify-content: flex-start;
+}
+.cashiers_data h2{
+    display: flex;
+    align-items: center;
+}
+.cashiers_data h3{
+    display: flex;
+    justify-content: flex-end;
+}

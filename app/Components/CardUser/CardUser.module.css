@@ -1,17 +1,15 @@
-.container {
-  background-color: #580107;
-  color: #fbb92d;
-  border-radius: 2rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  -webkit-box-shadow: 10px 10px 19px 3px rgba(0,0,0,0.75);
-  -moz-box-shadow: 10px 10px 19px 3px rgba(0,0,0,0.75);
-  box-shadow: 10px 10px 19px 3px rgba(0,0,0,0.75);
-  position: relative;
-  gap: 2rem;
-  padding: 2rem;
-  width: 80vh;
+.container{
+    background-color: var(--color-secondary);
+    color: var(--color-primary);
+    border-radius: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+   
+    position: relative;
+   gap: 2rem;
+   padding: 2rem;
+   width: 80vh;
 }
 
 .container input {

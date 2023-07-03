@@ -1,310 +1,85 @@
-'use client'
-import React from "react";
-import Link from "next/link";
+"use client";
+import React, { useEffect } from "react";
 import { useUsersContext } from "../UsersContext/UsersContext";
+import { FaUser } from "react-icons/fa";
+import css from "./Cashier.module.css";
+import { useUserContext } from "../UserContext/UserContext";
+import { Modal } from "../Components/modal/modal";
+import CreateCashier from "../Components/CreateCashier/CreateCashier";
 import { useRouter } from "next/navigation";
-
-
+import Card from "../Components/Card/Card";
 const Page = () => {
   const router = useRouter();
-const {usersDb} = useUsersContext();
-console.log(usersDb)
+  const { usersDb,charge,setCharge } = useUsersContext();
+  const { userDb } = useUserContext();
+  const tokenId = userDb?.token;
+  const [open, setOpen] = React.useState(false);
+  const [openUser, setOpenUser] = React.useState(false);
+  const [userSelected, setUserSelected] = React.useState(null);
+  console.log(usersDb)
+  const onClose = () => {
+    setOpen(!open);
+  };
+  const onCloseTwo = () => {
+    setOpenUser(!openUser);
+  };
+  const reload = () => {setCharge(!charge)};
+  useEffect(() => {
+    userDb && userDb.role === "ADMIN" ? null : router.push("/");
+  }, [router, userDb]);
+
+  const openDataUser = (user) => {
+    setUserSelected(user);
+    setOpenUser(!openUser);
+  };
+
   return (
     <main className="jc-sa">
-      <div className="div">
-        <input type="text" placeholder="buscar..." />
-        <button className="btn-create" onClick={()=> router.push('/UserCreate')}>
-          <span>+</span>
-          CREAR NUEVO
-        </button>
-        <div className="users">
-          <Link href={"/"}>
-            <article>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-                className="w-10 h-10"
-              >
-                <path
-                  fillRule="evenodd"
-                  d="M7.5 6a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM3.751 20.105a8.25 8.25 0 0116.498 0 .75.75 0 01-.437.695A18.683 18.683 0 0112 22.5c-2.786 0-5.433-.608-7.812-1.7a.75.75 0 01-.437-.695z"
-                  clipRule="evenodd"
-                />
-              </svg>
-              <h2>
-                PEPE HONGO <br /> <span>cajero</span>
-              </h2>
-            </article>
-          </Link>
-          <Link href={"/"}>
-            <article>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-                className="w-10 h-10"
-              >
-                <path
-                  fillRule="evenodd"
-                  d="M7.5 6a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM3.751 20.105a8.25 8.25 0 0116.498 0 .75.75 0 01-.437.695A18.683 18.683 0 0112 22.5c-2.786 0-5.433-.608-7.812-1.7a.75.75 0 01-.437-.695z"
-                  clipRule="evenodd"
-                />
-              </svg>
-              <h2>
-                PEPE HONGO <br /> <span>cajero</span>
-              </h2>
-            </article>
-          </Link>
-          <Link href={"/"}>
-            <article>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-                className="w-10 h-10"
-              >
-                <path
-                  fillRule="evenodd"
-                  d="M7.5 6a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM3.751 20.105a8.25 8.25 0 0116.498 0 .75.75 0 01-.437.695A18.683 18.683 0 0112 22.5c-2.786 0-5.433-.608-7.812-1.7a.75.75 0 01-.437-.695z"
-                  clipRule="evenodd"
-                />
-              </svg>
-              <h2>
-                PEPE HONGO <br /> <span>cajero</span>
-              </h2>
-            </article>
-          </Link>
-          <Link href={"/"}>
-            <article>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-                className="w-10 h-10"
-              >
-                <path
-                  fillRule="evenodd"
-                  d="M7.5 6a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM3.751 20.105a8.25 8.25 0 0116.498 0 .75.75 0 01-.437.695A18.683 18.683 0 0112 22.5c-2.786 0-5.433-.608-7.812-1.7a.75.75 0 01-.437-.695z"
-                  clipRule="evenodd"
-                />
-              </svg>
-              <h2>
-                PEPE HONGO <br /> <span>cajero</span>
-              </h2>
-            </article>
-          </Link>
-          <Link href={"/"}>
-            <article>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-                className="w-10 h-10"
-              >
-                <path
-                  fillRule="evenodd"
-                  d="M7.5 6a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM3.751 20.105a8.25 8.25 0 0116.498 0 .75.75 0 01-.437.695A18.683 18.683 0 0112 22.5c-2.786 0-5.433-.608-7.812-1.7a.75.75 0 01-.437-.695z"
-                  clipRule="evenodd"
-                />
-              </svg>
-              <h2>
-                PEPE HONGO <br /> <span>cajero</span>
-              </h2>
-            </article>
-          </Link>
-          <Link href={"/"}>
-            <article>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-                className="w-10 h-10"
-              >
-                <path
-                  fillRule="evenodd"
-                  d="M7.5 6a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM3.751 20.105a8.25 8.25 0 0116.498 0 .75.75 0 01-.437.695A18.683 18.683 0 0112 22.5c-2.786 0-5.433-.608-7.812-1.7a.75.75 0 01-.437-.695z"
-                  clipRule="evenodd"
-                />
-              </svg>
-              <h2>
-                PEPE HONGO <br /> <span>cajero</span>
-              </h2>
-            </article>
-          </Link>
-          <Link href={"/"}>
-            <article>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-                className="w-10 h-10"
-              >
-                <path
-                  fillRule="evenodd"
-                  d="M7.5 6a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM3.751 20.105a8.25 8.25 0 0116.498 0 .75.75 0 01-.437.695A18.683 18.683 0 0112 22.5c-2.786 0-5.433-.608-7.812-1.7a.75.75 0 01-.437-.695z"
-                  clipRule="evenodd"
-                />
-              </svg>
-              <h2>
-                PEPE HONGO <br /> <span>cajero</span>
-              </h2>
-            </article>
-          </Link>
-          <Link href={"/"}>
-            <article>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-                className="w-10 h-10"
-              >
-                <path
-                  fillRule="evenodd"
-                  d="M7.5 6a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM3.751 20.105a8.25 8.25 0 0116.498 0 .75.75 0 01-.437.695A18.683 18.683 0 0112 22.5c-2.786 0-5.433-.608-7.812-1.7a.75.75 0 01-.437-.695z"
-                  clipRule="evenodd"
-                />
-              </svg>
-              <h2>
-                PEPE HONGO <br /> <span>cajero</span>
-              </h2>
-            </article>
-          </Link>
-          <Link href={"/"}>
-            <article>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-                className="w-10 h-10"
-              >
-                <path
-                  fillRule="evenodd"
-                  d="M7.5 6a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM3.751 20.105a8.25 8.25 0 0116.498 0 .75.75 0 01-.437.695A18.683 18.683 0 0112 22.5c-2.786 0-5.433-.608-7.812-1.7a.75.75 0 01-.437-.695z"
-                  clipRule="evenodd"
-                />
-              </svg>
-              <h2>
-                PEPE HONGO <br /> <span>cajero</span>
-              </h2>
-            </article>
-          </Link>
-          <Link href={"/"}>
-            <article>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-                className="w-10 h-10"
-              >
-                <path
-                  fillRule="evenodd"
-                  d="M7.5 6a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM3.751 20.105a8.25 8.25 0 0116.498 0 .75.75 0 01-.437.695A18.683 18.683 0 0112 22.5c-2.786 0-5.433-.608-7.812-1.7a.75.75 0 01-.437-.695z"
-                  clipRule="evenodd"
-                />
-              </svg>
-              <h2>
-                PEPE HONGO <br /> <span>cajero</span>
-              </h2>
-            </article>
-          </Link>
-          <Link href={"/"}>
-            <article>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-                className="w-10 h-10"
-              >
-                <path
-                  fillRule="evenodd"
-                  d="M7.5 6a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM3.751 20.105a8.25 8.25 0 0116.498 0 .75.75 0 01-.437.695A18.683 18.683 0 0112 22.5c-2.786 0-5.433-.608-7.812-1.7a.75.75 0 01-.437-.695z"
-                  clipRule="evenodd"
-                />
-              </svg>
-              <h2>
-                PEPE HONGO <br /> <span>cajero</span>
-              </h2>
-            </article>
-          </Link>
-          <Link href={"/"}>
-            <article>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-                className="w-10 h-10"
-              >
-                <path
-                  fillRule="evenodd"
-                  d="M7.5 6a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM3.751 20.105a8.25 8.25 0 0116.498 0 .75.75 0 01-.437.695A18.683 18.683 0 0112 22.5c-2.786 0-5.433-.608-7.812-1.7a.75.75 0 01-.437-.695z"
-                  clipRule="evenodd"
-                />
-              </svg>
-              <h2>
-                PEPE HONGO <br /> <span>cajero</span>
-              </h2>
-            </article>
-          </Link>
-          <Link href={"/"}>
-            <article>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-                className="w-10 h-10"
-              >
-                <path
-                  fillRule="evenodd"
-                  d="M7.5 6a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM3.751 20.105a8.25 8.25 0 0116.498 0 .75.75 0 01-.437.695A18.683 18.683 0 0112 22.5c-2.786 0-5.433-.608-7.812-1.7a.75.75 0 01-.437-.695z"
-                  clipRule="evenodd"
-                />
-              </svg>
-              <h2>
-                PEPE HONGO <br /> <span>cajero</span>
-              </h2>
-            </article>
-          </Link>
-          <Link href={"/"}>
-            <article>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-                className="w-10 h-10"
-              >
-                <path
-                  fillRule="evenodd"
-                  d="M7.5 6a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM3.751 20.105a8.25 8.25 0 0116.498 0 .75.75 0 01-.437.695A18.683 18.683 0 0112 22.5c-2.786 0-5.433-.608-7.812-1.7a.75.75 0 01-.437-.695z"
-                  clipRule="evenodd"
-                />
-              </svg>
-              <h2>
-                PEPE HONGO <br /> <span>cajero</span>
-              </h2>
-            </article>
-          </Link>
-          <Link href={"/"}>
-            <article>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-                className="w-10 h-10"
-              >
-                <path
-                  fillRule="evenodd"
-                  d="M7.5 6a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM3.751 20.105a8.25 8.25 0 0116.498 0 .75.75 0 01-.437.695A18.683 18.683 0 0112 22.5c-2.786 0-5.433-.608-7.812-1.7a.75.75 0 01-.437-.695z"
-                  clipRule="evenodd"
-                />
-              </svg>
-              <h2>
-                PEPE HONGO <br /> <span>cajero</span>
-              </h2>
-            </article>
-          </Link>
+      {open ? (
+        <Modal onClose={onClose}>
+          <div className="div">
+            <CreateCashier tokenId={tokenId} onClose={onClose} reload={reload} />
+          </div>
+        </Modal>
+      ) : openUser ? (
+        <Modal onClose={onCloseTwo}>
+          <div className="div">
+            <Card
+                tokenId={tokenId}
+                username={userSelected.username}
+                id={userSelected.id}
+                phone={userSelected.phone}
+                email={userSelected.email}
+                percent_agreement={userSelected.percent_agreement}
+                role={userSelected.role} reload={reload} onCloseTwo={onCloseTwo}            />
+          </div>
+        </Modal>
+      ) : (
+        <div className="div">
+          <input type="text" placeholder="buscar..." />
+          <button className="btn-create" onClick={() => setOpen(!open)}>
+            <span>+</span>
+            CREAR NUEVO
+          </button>
+          <div className="users">
+            <ul className={css.container_cashiers}>
+              {usersDb.map((user) => (
+                <li
+                  key={user.id}
+                  className={css.cashiers_data}
+                  onClick={() => openDataUser(user)}
+                >
+                  <h1>
+                    <FaUser />
+                  </h1>
+                  <h2>{user.username}</h2>
+                  <h3>{user.role}</h3>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
-      </div>
+      )}
     </main>
   );
 };
