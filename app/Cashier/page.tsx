@@ -2,16 +2,18 @@
 import React from "react";
 import Link from "next/link";
 import { useUsersContext } from "../UsersContext/UsersContext";
+import { useRouter } from "next/navigation";
 
 
 const Page = () => {
+  const router = useRouter();
 const {usersDb} = useUsersContext();
 console.log(usersDb)
   return (
     <main className="jc-sa">
       <div className="div">
         <input type="text" placeholder="buscar..." />
-        <button className="btn-create">
+        <button className="btn-create" onClick={()=> router.push('/UserCreate')}>
           <span>+</span>
           CREAR NUEVO
         </button>
