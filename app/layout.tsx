@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-no-undef */
 /* eslint-disable react-hooks/rules-of-hooks */
 'use client'
 import './globals.css'
@@ -6,6 +7,7 @@ import Navbar from './Components/Navbar/Navbar'
 import { UserProvider } from './UserContext/UserProvider'
 import { usePathname } from 'next/navigation'
 import { UsersProvider } from './UsersContext/UsersProvider'
+import { CasinoProvider } from './CasinoContext/CasinoProvider'
 
 
 const inter = Inter({ subsets: ['latin'] })
@@ -24,12 +26,14 @@ export default function RootLayout({ children }) {
         <meta name="description" content="Casino Online" />
       </head>
       <body className={inter.className}>
+        <CasinoProvider>
         <UserProvider>
         <UsersProvider>
         {children}
         {path !== '/' ? <Navbar /> : null }
         </UsersProvider>
         </UserProvider>
+        </CasinoProvider>
       </body>
     </html>
   )
