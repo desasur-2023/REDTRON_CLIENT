@@ -1,69 +1,51 @@
+/* eslint-disable @next/next/no-img-element */
 "use client";
-import Image from "next/image";
-import css from "./Casinos.module.css";
 
+import css from "./Casinos.module.css";
+import { useCasinosContext } from "../CasinoContext/CasinoContext";
 import Link from "next/link";
-import casino1 from "../assets/Gabriela lia Noble_.jpg";
-import casino2 from "../assets/Safari-King.png";
-import casino3 from "../assets/icon-vikingoapp.png";
-import casino4 from "../assets/konabet.png";
-import casino5 from "../assets/megafaron.jpg";
-import casino6 from "../assets/zeus.png";
+
 import React from "react";
+import { Modal } from "../Components/modal/modal";
+import Casino from "../Components/Casino/Casino";
 
 export default function Page() {
+  const { casinosDb } = useCasinosContext();
+  const [open, setOpen] = React.useState(false);
+  const [casino, setCasino] = React.useState(null);
+  const onClose = () => setOpen(!open);
+
+  const openCasino = (casino) => {
+    setOpen(!open);
+    setCasino(casino);
+  };
+
   return (
     <main className="jc-sa">
-      <div >
-        <div>
-          <div className={css.tri}>
-            <Link href={"/"}>
-              <Image src={casino1} alt="casino" width={150} height={150} />
-            </Link>
-            <Link href={"/"}>
-              <Image src={casino2} alt="casino" width={150} height={150} />
-            </Link>
-            <Link href={"/"}>
-              <Image
-                src={casino3}
-                alt="casino"
-                width={150}
-                height={150}
-                priority
-              />
-            </Link>
+      
+        {open ? (
+          <Modal onClose={onClose}>
+            <Casino
+              id={casino?.id}
+              name={casino?.name}
+              imageUrl={casino?.imageUrl}
+              onClose={onClose}
+            />
+          </Modal>
+        ) : (
+          <div>
+            <h1>Casinos Redtron</h1>
+            <div className={css.tri}>
+              {casinosDb?.map((e) => (
+                <div key={e.id} onClick={() => openCasino(e)}>
+                  <img src={e.imageUrl} alt="casino" width={150} height={150} />
+                  <h3>{e.name}</h3>
+                </div>
+              ))}
+            </div>
           </div>
-          <div className={css.tri}>
-            <Link href={"/"}>
-              <Image
-                src={casino4}
-                alt="casino"
-                width={150}
-                height={150}
-                priority
-              />
-            </Link>
-            <Link href={"/"}>
-              <Image
-                src={casino5}
-                alt="casino"
-                width={150}
-                height={150}
-                priority
-              />
-            </Link>
-            <Link href={"/"}>
-              <Image
-                src={casino6}
-                alt="casino"
-                width={150}
-                height={150}
-                priority
-              />
-            </Link>
-          </div>
-        </div>
-      </div>
+        )}
+      
     </main>
   );
 }

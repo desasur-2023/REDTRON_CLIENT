@@ -11,14 +11,13 @@ const Card = ({
   role,
   reload,
   onCloseTwo,
+  status
 }) => {
   const [open, setOpen] = React.useState(false);
   const [userEdit, setUserEdit] = React.useState({
-    phone: "",
-    email: "",
-    percent_agreement: 0,
-    password: "",
-    role: "",
+    phone,
+    email,
+    percent_agreement   
   });
   console.log(userEdit);
   const onClose = () => {
@@ -37,6 +36,7 @@ const Card = ({
     onCloseTwo();
   };
   const blockUser = async () => {
+    const state = status === 'ACTIVE' ? 'DISABLED' : 'ACTIVE';
     const response = await fetch(`http://localhost:3001/users/${id}`, {
       method: "put",
       headers: {
@@ -44,7 +44,22 @@ const Card = ({
         authorization: "Bearer " + tokenId,
       },
       body: JSON.stringify({
-        status: "DISABLED",
+        status: state,
+      }),
+    });
+    reload();
+    onCloseTwo();
+  };
+  const changeRole = async () => {
+    const rol = role === 'ADMIN' ? 'TELLER' : 'ADMIN';
+    const response = await fetch(`http://localhost:3001/users/${id}`, {
+      method: "put",
+      headers: {
+        "Content-Type": "application/json",
+        authorization: "Bearer " + tokenId,
+      },
+      body: JSON.stringify({
+        role: rol,
       }),
     });
     reload();
@@ -90,6 +105,7 @@ const Card = ({
       {open ? (
         <div>
           <form className={css.form_container} onSubmit={handlerSubmit}>
+            <h2>{username}</h2>
             <input
               type="text"
               name="phone"
@@ -111,23 +127,7 @@ const Card = ({
               value={userEdit.percent_agreement}
               onChange={handlerPercentChange}
               placeholder="Percent Agreement"
-            />
-            <input
-              type="text"
-              name="password"
-              value={userEdit.password}
-              onChange={handlerInputChange}
-              placeholder="Contraseña"
-            />
-            <input
-              type="text"
-              name="role"
-              value={userEdit.role}
-              autoCapitalize="characters"
-              onChange={handlerInputChange}
-              placeholder="Rol"
-              required
-            />
+            />                    
             <button type="submit">Guardar cambios</button>
           </form>
         </div>
@@ -151,10 +151,15 @@ const Card = ({
               <h3>Percent Agreement:</h3>
               <h3>{percent_agreement}</h3>
             </div>
+            <div className={css.data}>
+              <h3>Estatus:</h3>
+              <h3>{status}</h3>
+            </div>
             <div className={css.btn}>
               <button onClick={deleteUser}>Eliminar</button>
               <button onClick={blockUser}>Bloquear</button>
               <button onClick={onClose}>Editar</button>
+              <button onClick={changeRole}>Cambiar Rol</button>
             </div>
           </div>
         </div>

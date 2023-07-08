@@ -32,9 +32,9 @@ console.log(open)
         <main className="jc-sa ">
           <Header setOpen={openModal} />
           <div>
-            <h2 className="align-right subrayado">$5.974.100</h2>
+            <h1 className="align-right subrayado">$5.974.100</h1>
             <span>GANANCIAS</span>
-            <h2 className="align-right subrayado">$1.234.567</h2>
+            <h1 className="align-right subrayado">$1.234.567</h1>
             <span>PERDIDAS</span>
             <br />
             <div className="column">

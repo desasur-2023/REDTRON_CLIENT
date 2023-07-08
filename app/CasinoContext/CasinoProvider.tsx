@@ -1,38 +1,38 @@
 "use client";
 import React, { useEffect } from "react";
-import { UsersContext } from "./UsersContext";
+import { CasinosContext } from "./CasinoContext";
 import { useUserContext } from "../UserContext/UserContext";
 
-export const UsersProvider = ({ children }: any) => {
-  const [usersDb, setUsersDB] = React.useState();
+export const CasinoProvider = ({ children }: any) => {
+  const [casinosDb, setCasinosDB] = React.useState();
   const [charge, setCharge] = React.useState(false);
   const { userDb } = useUserContext();
   const tokenID = userDb?.token;
- 
+  
 
-  const getUsersDb = async () => {
+  const getCasinosDb = async () => {
     try {
-      const response = await fetch("http://localhost:3001/users", {
+      const response = await fetch("http://localhost:3001/casino", {
         headers: {
           "Content-Type": "application/json",
           authorization: "Bearer " + tokenID,
         }
       });
       const data = await response.json();
-      setUsersDB(data.data);
+      setCasinosDB(data);
     } catch (error) {
       console.log("Error fetching users:", error);
     }
   };
 
   useEffect(() => {
-    tokenID && getUsersDb();
-  }, [userDb.token,charge]);
+    getCasinosDb();
+  }, [userDb]);
  
 
   return (
-    <UsersContext.Provider value={{ usersDb, setCharge, charge }}>
+    <CasinosContext.Provider value={{ casinosDb, setCharge, charge }}>
       {children}
-    </UsersContext.Provider>
+    </CasinosContext.Provider>
   );
 };

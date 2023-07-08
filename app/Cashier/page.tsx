@@ -51,16 +51,14 @@ const Page = () => {
         <Modal onClose={onCloseTwo}>
           <div className="div">
             <Card
-              tokenId={tokenId}
-              username={userSelected.username}
-              id={userSelected.id}
-              phone={userSelected.phone}
-              email={userSelected.email}
-              percent_agreement={userSelected.percent_agreement}
-              role={userSelected.role}
-              reload={reload}
-              onCloseTwo={onCloseTwo}
-            />
+                tokenId={tokenId}
+                username={userSelected.username}
+                id={userSelected.id}
+                phone={userSelected.phone}
+                email={userSelected.email}
+                percent_agreement={userSelected.percent_agreement}
+                role={userSelected.role} reload={reload} onCloseTwo={onCloseTwo}  
+                status={userSelected.status}          />
           </div>
         </Modal>
       ) : (
