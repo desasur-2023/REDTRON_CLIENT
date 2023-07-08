@@ -1,6 +1,8 @@
 "use client";
 import React, { useState } from "react";
 import { useUserContext } from "../../UserContext/UserContext";
+import swal from "sweetalert";
+import css from "./CreateCasino.module.css";
 
 const CreateCasino = ({ onClose, Reload }) => {
   const { userDb } = useUserContext();
@@ -40,10 +42,15 @@ const CreateCasino = ({ onClose, Reload }) => {
     });
     onClose();
     Reload();
+    swal({
+      title: 'Casino creado correctamente!',
+      icon: 'success',
+
+    });
   };
   return (
     <div onClick={(e) => e.stopPropagation()}>
-      <form onSubmit={handlerSubmit}>
+      <form className={css.formulario} onSubmit={handlerSubmit}>
         <h2>Crear Casino</h2>
         <input
           type="text"

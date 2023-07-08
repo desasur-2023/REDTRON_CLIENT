@@ -39,7 +39,7 @@ const CreateCashier = ({ tokenId, onClose, reload }) => {
       swal(error.message);
     }
     swal({
-      title: 'Cajero creado',
+      title: 'Cajero creado correctamente!',
       icon: 'success',
 
     });
