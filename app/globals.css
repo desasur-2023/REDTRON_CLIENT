@@ -38,6 +38,8 @@ body {
   min-height: 100vh;
 }
 
+
+
 main {
   min-height: 100vh;
   display: flex;
@@ -187,12 +189,9 @@ h2 span {
 .users {
   padding: 60px 0;
   display: flex;
-  gap: 70px;
   justify-content: center;
   flex-direction: row;
-  width: 40%;
   flex-wrap: wrap;
-  margin: 0 auto;
 }
 
 .btn-create{

@@ -12,7 +12,7 @@ const CreateCashier = ({ tokenId, onClose, reload }) => {
     percent_agreement: 0,
   });
 
-  const createCashier = async (token, object) => {
+  const createCashier = async (token:string, object:object) => {
     const userDb = await fetch("http://localhost:3001/users", {
       method: "POST",
       headers: {
@@ -39,7 +39,7 @@ const CreateCashier = ({ tokenId, onClose, reload }) => {
       swal(error.message);
     }
     swal({
-      title: 'Cajero creado',
+      title: 'Cajero creado correctamente!',
       icon: 'success',
 
     });

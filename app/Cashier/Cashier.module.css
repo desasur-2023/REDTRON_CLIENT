@@ -1,11 +1,11 @@
 .container_cashiers {
   display: flex;
-  gap: 2rem;
-  align-items: center;
-  width: 90vw;
-  flex-direction: row;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: center;
+
+  flex-direction: row;
+  gap: 60px;
+  width: 80vw;
 }
 .cashiers_data {
   display: flex;
@@ -30,6 +30,7 @@
 .cashiers_data h2 {
   display: flex;
   align-items: center;
+  font-size: 1em;
 }
 .cashiers_data h3 {
   display: flex;
@@ -38,4 +39,5 @@
 
 .users {
   display: flex;
+  width: 80vw;
 }
