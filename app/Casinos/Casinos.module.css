@@ -1,7 +1,9 @@
 .tri{
     display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
     justify-content: center;
-    align-items: center;
+    align-items: flex-end;
     gap: 3rem;
     padding: 2rem;
     margin: 2rem;
