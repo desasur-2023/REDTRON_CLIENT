@@ -10,20 +10,22 @@ import { useRouter } from "next/navigation";
 import Card from "../Components/Card/Card";
 const Page = () => {
   const router = useRouter();
-  const { usersDb,charge,setCharge } = useUsersContext();
+  const { usersDb, charge, setCharge } = useUsersContext();
   const { userDb } = useUserContext();
   const tokenId = userDb?.token;
   const [open, setOpen] = React.useState(false);
   const [openUser, setOpenUser] = React.useState(false);
   const [userSelected, setUserSelected] = React.useState(null);
-  console.log(usersDb)
+  console.log(usersDb);
   const onClose = () => {
     setOpen(!open);
   };
   const onCloseTwo = () => {
     setOpenUser(!openUser);
   };
-  const reload = () => {setCharge(!charge)};
+  const reload = () => {
+    setCharge(!charge);
+  };
   useEffect(() => {
     userDb && userDb.role === "ADMIN" ? null : router.push("/");
   }, [router, userDb]);
@@ -38,7 +40,11 @@ const Page = () => {
       {open ? (
         <Modal onClose={onClose}>
           <div className="div">
-            <CreateCashier tokenId={tokenId} onClose={onClose} reload={reload} />
+            <CreateCashier
+              tokenId={tokenId}
+              onClose={onClose}
+              reload={reload}
+            />
           </div>
         </Modal>
       ) : openUser ? (
@@ -64,7 +70,7 @@ const Page = () => {
           </button>
           <div className="users">
             <ul className={css.container_cashiers}>
-              {usersDb.map((user) => (
+              {usersDb?.map((user) => (
                 <li
                   key={user.id}
                   className={css.cashiers_data}
@@ -73,8 +79,10 @@ const Page = () => {
                   <h1>
                     <FaUser />
                   </h1>
-                  <h2>{user.username}</h2>
-                  <h3>{user.role}</h3>
+                  <div className="cashier-name">
+                    <h2>{user.username}</h2>
+                    <h3>{user.role}</h3>
+                  </div>
                 </li>
               ))}
             </ul>

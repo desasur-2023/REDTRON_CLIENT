@@ -20,25 +20,26 @@ span::selection {
 :root {
   --color-primary: #fbb92d;
   --color-primary-ligth: #fbba2d58;
-  --color-secondary: #121212;
-
+  --color-secondary: #1d1d1d;
+  --bg--url:url("http://eugenioaragon.com.ar/redtron/bgcasino.jpg")
  
 }
 body {
-  background: url("./assets/bg.png") var(--color-primary);
-  background-repeat: repeat;
+  background-image: linear-gradient(45deg, rgb(240, 99, 99) 0%, rgb(240, 99, 99) 11%,rgb(230, 115, 107) 11%, rgb(230, 115, 107) 24%,rgb(220, 132, 114) 24%, rgb(220, 132, 114) 29%,rgb(210, 148, 122) 29%, rgb(210, 148, 122) 45%,rgb(199, 164, 129) 45%, rgb(199, 164, 129) 87%,rgb(189, 181, 137) 87%, rgb(189, 181, 137) 90%,rgb(179, 197, 144) 90%, rgb(179, 197, 144) 100%),linear-gradient(67.5deg, rgb(240, 99, 99) 0%, rgb(240, 99, 99) 11%,rgb(230, 115, 107) 11%, rgb(230, 115, 107) 24%,rgb(220, 132, 114) 24%, rgb(220, 132, 114) 29%,rgb(210, 148, 122) 29%, rgb(210, 148, 122) 45%,rgb(199, 164, 129) 45%, rgb(199, 164, 129) 87%,rgb(189, 181, 137) 87%, rgb(189, 181, 137) 90%,rgb(179, 197, 144) 90%, rgb(179, 197, 144) 100%),linear-gradient(135deg, rgb(240, 99, 99) 0%, rgb(240, 99, 99) 11%,rgb(230, 115, 107) 11%, rgb(230, 115, 107) 24%,rgb(220, 132, 114) 24%, rgb(220, 132, 114) 29%,rgb(210, 148, 122) 29%, rgb(210, 148, 122) 45%,rgb(199, 164, 129) 45%, rgb(199, 164, 129) 87%,rgb(189, 181, 137) 87%, rgb(189, 181, 137) 90%,rgb(179, 197, 144) 90%, rgb(179, 197, 144) 100%),linear-gradient(90deg, rgb(156, 174, 7),rgb(129, 53, 44)); background-blend-mode:overlay,overlay,overlay,normal;
+  /* background: url("./assets/bg.png") var(--color-primary);
+  background-repeat: repeat; */
   font-family: "Roboto", sans-serif;
   color: var(--color-secondary);
   margin: 0 auto;
   display: flex;
-  place-items: center;
+  flex-direction: column;
+  align-items: center;
   min-width: 320px;
   min-height: 100vh;
 }
 
 main {
   min-height: 100vh;
-  min-width: 100vw;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -48,14 +49,21 @@ main {
 }
 
 h1 {
-  font-size: 3.2em;
+  font-size: 2em;
   line-height: 1.1;
-  font-weight: 700;
+  font-weight: 900;
+  font-style: italic;
 }
 h2 {
-  font-size: 1.5em;
+  font-size: 1.3em;
   font-weight: 700;
   font-style: italic;
+  margin: 0;
+  flex-direction: column;
+  display: flex;
+}
+h3{
+  font-size: 0.8em;
 }
 
 button {
@@ -66,7 +74,7 @@ button {
   font-weight: 900;
   font-style: italic;
   color: #f3f3f3;
-  background-color: var(--color-secondary);
+  background-color: var(--color-secondary) !important;
   cursor: pointer;
   transition: border-color 0.25s;
 }
@@ -81,12 +89,13 @@ button:focus-visible {
     color: #213547;
     background-color: #ffffff;
   }
-  a:hover,
-  button:hover {
-    opacity: 0.9;
-  }
+
+  
 }
 
+a:hover, button:hover {
+  opacity: 0.9;
+}
 input {
   border: var(--color-secondary) 1px solid;
   border-radius: 10px;
@@ -94,14 +103,14 @@ input {
 }
 
 form {
-  min-width: 20%;
-  max-width: 50%;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: stretch;
 }
 
 a {
+  cursor: pointer;
   text-decoration: none;
   color: var(--color-secondary);
   font-size: 10pt;
@@ -109,7 +118,7 @@ a {
 }
 
 a:hover{
-  transform: scale(1.05);
+  opacity: 0.8;
 }
 
 .article {
@@ -120,9 +129,7 @@ a:hover{
 }
 
 h2 {
-  margin: 0;
-  flex-direction: column;
-  display: flex;
+
 }
 
 h2 span {
@@ -145,6 +152,7 @@ h2 span {
 .flex-right {
   display: flex;
   justify-content: flex-end;
+  align-items: center;
   gap: 20px;
 }
 
@@ -155,6 +163,7 @@ h2 span {
 .flex-left {
   display: flex;
   justify-content: flex-start;
+  align-items: center;
   gap: 20px;
 }
 
@@ -221,4 +230,10 @@ h2 span {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.swal-overlay {
+
+  z-index: 9999999999;
+
 }

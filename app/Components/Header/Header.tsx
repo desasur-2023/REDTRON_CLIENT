@@ -10,7 +10,7 @@ export default function header({setOpen}) {
   
   return (
     <div className={css.header}>      
-      <h2>Bienvenida {userDb?.username.toUpperCase()}!</h2>
+      <h1>Bienvenida {userDb?.username.toUpperCase()}!</h1>
      
       <button  onClick={()=>setOpen()} >
         <h2><FaUser /></h2>
@@ -21,7 +21,7 @@ export default function header({setOpen}) {
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 24 24"
           fill="currentColor"
-          className="w-7 h-7"
+          className="w-5 h-5"
         >
           <path
             fillRule="evenodd"

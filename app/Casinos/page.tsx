@@ -22,7 +22,7 @@ export default function Page() {
 
   return (
     <main className="jc-sa">
-      <div>
+      
         {open ? (
           <Modal onClose={onClose}>
             <Casino
@@ -45,7 +45,7 @@ export default function Page() {
             </div>
           </div>
         )}
-      </div>
+      
     </main>
   );
 }
