@@ -8,7 +8,7 @@ export const UsersProvider = ({ children }: any) => {
   const [charge, setCharge] = React.useState(false);
   const { userDb } = useUserContext();
   const tokenID = userDb?.token;
-  console.log(tokenID)
+ 
 
   const getUsersDb = async () => {
     try {

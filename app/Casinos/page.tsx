@@ -29,16 +29,20 @@ export default function Page() {
               id={casino?.id}
               name={casino?.name}
               imageUrl={casino?.imageUrl}
+              onClose={onClose}
             />
           </Modal>
         ) : (
-          <div className={css.tri}>
-            {casinosDb?.map((e) => (
-              <div key={e.id} onClick={() => openCasino(e)}>
-                <img src={e.imageUrl} alt="casino" width={150} height={150} />
-                <h3>{e.name}</h3>
-              </div>
-            ))}
+          <div>
+            <h1>Casinos Redtron</h1>
+            <div className={css.tri}>
+              {casinosDb?.map((e) => (
+                <div key={e.id} onClick={() => openCasino(e)}>
+                  <img src={e.imageUrl} alt="casino" width={150} height={150} />
+                  <h3>{e.name}</h3>
+                </div>
+              ))}
+            </div>
           </div>
         )}
       </div>
