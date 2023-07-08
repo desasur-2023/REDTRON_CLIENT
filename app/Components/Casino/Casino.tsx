@@ -91,7 +91,7 @@ const Casino = ({ id, name, imageUrl, onClose }) => {
       <div className={css.title}>
         <h1>{name}</h1>
         <img src={imageUrl} alt={name} />
-        <button onClick={onClose}>X</button>
+        <button onClick={onClose}>cerrar</button>
       </div>
       <div className={css.boxes}>
         <div className={css.box}>
@@ -120,9 +120,10 @@ const Casino = ({ id, name, imageUrl, onClose }) => {
               <h3 key={obj.id}>{obj.username}</h3>
             ))}
           </div>
-          <button onClick={() => postUserCasino()}>Agregar cajero/os</button>
+         
         </div>
       </div>
+      <button onClick={() => postUserCasino()}>AGREGAR</button>
     </div>
   );
 };
