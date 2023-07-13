@@ -9,6 +9,14 @@
     margin: 2rem;
 }
 
+.tri div{
+    cursor: pointer;
+}
+
+.tri div:hover{
+    transform: scale(0.98);
+}
+
 .casinos{
     display: flex;
     flex-direction: column;
