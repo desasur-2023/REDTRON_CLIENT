@@ -10,6 +10,7 @@
     border-radius: 1.5rem;
     background-color: var(--color-secondary);
     color: var(--color-primary);
+    position: relative;
 }
 .container h2{
     display: flex;
@@ -26,6 +27,13 @@
     align-items: center;
     margin: 0 auto;  
 
+}
+.form_container_name{
+    display: flex;  
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+   
 }
 
 .data{
