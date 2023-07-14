@@ -58,6 +58,7 @@ const Page = () => {
                 email={userSelected.email}
                 percent_agreement={userSelected.percent_agreement}
                 role={userSelected.role} reload={reload} onCloseTwo={onCloseTwo}  
+                userCasino={userSelected.user_casino}
                 status={userSelected.status}          />
           </div>
         </Modal>
@@ -81,7 +82,7 @@ const Page = () => {
                   </h1>
                   <div className="cashier-name">
                     <h2>{user.username}</h2>
-                    <h3>{user.role}</h3>
+                    <h3>{user.role === 'ADMIN' ? 'ADMINISTRADOR' : 'CAJERO'}</h3>
                   </div>
                 </li>
               ))}

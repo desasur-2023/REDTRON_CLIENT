@@ -26,14 +26,14 @@ export default function RootLayout({ children }) {
         <meta name="description" content="Casino Online" />
       </head>
       <body className={inter.className}>
-        <CasinoProvider>
         <UserProvider>
         <UsersProvider>
+        <CasinoProvider>
         {children}
         {path !== '/' ? <Navbar /> : null }
+        </CasinoProvider>
         </UsersProvider>
         </UserProvider>
-        </CasinoProvider>
       </body>
     </html>
   )
