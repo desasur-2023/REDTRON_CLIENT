@@ -1,16 +1,27 @@
+/* eslint-disable react-hooks/rules-of-hooks */
+
+import { useUserContext } from "../../UserContext/UserContext";
 import css from "./Header.module.css";
 import Link from "next/link";
-export default function header() {
+import { FaUser } from "react-icons/fa";
+
+export default function header({setOpen}) { 
+  const { userDb } = useUserContext();
+  
   return (
-    <div className={css.header}>
-      <Link href={"/home"}>{"< volver"}</Link>
-      <h2>Bienvenida Ana!</h2>
-      <Link href={""}>
+    <div className={css.header}>      
+      <h1>Bienvenida {userDb?.username.toUpperCase()}!</h1>
+     
+      <button  onClick={()=>setOpen()} >
+        <h2><FaUser /></h2>
+      
+      </button>
+      <button>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 24 24"
           fill="currentColor"
-          className="w-7 h-7"
+          className="w-5 h-5"
         >
           <path
             fillRule="evenodd"
@@ -18,7 +29,7 @@ export default function header() {
             clipRule="evenodd"
           />
         </svg>
-      </Link>
+      </button>
     </div>
   );
 }

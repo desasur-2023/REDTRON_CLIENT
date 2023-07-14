@@ -1,0 +1,15 @@
+.tri{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 3rem;
+    padding: 2rem;
+    margin: 2rem;
+}
+
+.casinos{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
