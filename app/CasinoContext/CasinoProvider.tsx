@@ -8,7 +8,7 @@ export const CasinoProvider = ({ children }: any) => {
   const [charge, setCharge] = React.useState(false);
   const { userDb } = useUserContext();
   const tokenID = userDb?.token;
-  
+  console.log(userDb)
 
   const getCasinosDb = async () => {
     try {
@@ -26,7 +26,7 @@ export const CasinoProvider = ({ children }: any) => {
   };
 
   useEffect(() => {
-    getCasinosDb();
+    tokenID && getCasinosDb();
   }, [userDb]);
  
 
