@@ -30,15 +30,14 @@ const AssignCoins = () => {
     }
   };
 
-  const handleInputChange = (event) => {
-    const { name, value } = event.target;
-    setInput((prevState) => ({
-      ...prevState,
+  const handleInputChange = ({target: { name, value }}:React.ChangeEvent<HTMLSelectElement>) => {    
+    setInput({
+      ...input,
       [name]: value,
-    }));
+    });
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = (event:React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     postCoins(input, tokenId);
     setInput({
@@ -49,20 +48,23 @@ const AssignCoins = () => {
 
   return (
     <div onClick={(e) => e.stopPropagation()}>
-      <form className="" onSubmit={handleSubmit}>
+      <form  onSubmit={handleSubmit}>
         <h2>Asignar Fichas</h2>
         <label>
           Usuario:
-          <select name="userId" value={input.userId} onChange={handleInputChange}>
+          <select
+            name="userId"
+            value={input.userId}
+            onChange={handleInputChange}
+          >
             <option value=""></option>
           </select>
         </label>
-        <label>
-          Cantidad de fichas:
-          <input
-            type="number"
-            name="amount"
-           
-
+        <label>Cantidad de fichas:</label>
+        <input type="number" name="amount" />
+      </form>
+    </div>
+  );
+};
 
 export default AssignCoins;

@@ -28,7 +28,7 @@ export const CoinsProvider = ({ children }: any) => {
   };
 
   useEffect(() => {
-    getCoinsDb();
+    tokenID && getCoinsDb();
   }, [userDb]);
  
 
