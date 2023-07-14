@@ -1,10 +1,20 @@
 .tri{
     display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
     justify-content: center;
-    align-items: center;
+    align-items: flex-end;
     gap: 3rem;
     padding: 2rem;
     margin: 2rem;
+}
+
+.tri div{
+    cursor: pointer;
+}
+
+.tri div:hover{
+    transform: scale(0.98);
 }
 
 .casinos{
