@@ -11,18 +11,28 @@ const Card = ({
   role,
   reload,
   onCloseTwo,
-  status
+  userCasino,
+  status,
 }) => {
   const [open, setOpen] = React.useState(false);
   const [userEdit, setUserEdit] = React.useState({
     phone,
     email,
-    percent_agreement   
+    percent_agreement,
   });
-  console.log(userEdit);
+  console.log(role);
+
+  const state =()=> status
+
+  React.useEffect(() => {
+    state()
+  },[status])
+
+  const estado = state()
   const onClose = () => {
     setOpen(!open);
   };
+  const transformStatus = status === 'INACTIVE'? 'INACTIVO': status === "DISABLED" ? 'BLOQUEADO' : 'ACTIVO'
 
   const deleteUser = async () => {
     const response = await fetch(`http://localhost:3001/users/${id}`, {
@@ -36,7 +46,7 @@ const Card = ({
     onCloseTwo();
   };
   const blockUser = async () => {
-    const state = status === 'ACTIVE' ? 'DISABLED' : 'ACTIVE';
+    const state = status === "ACTIVE" ? "DISABLED" : "ACTIVE";
     const response = await fetch(`http://localhost:3001/users/${id}`, {
       method: "put",
       headers: {
@@ -48,12 +58,12 @@ const Card = ({
       }),
     });
     reload();
-    onCloseTwo();
+    onCloseTwo(); 
   };
   const changeRole = async () => {
-    const rol = role === 'ADMIN' ? 'TELLER' : 'ADMIN';
+    const rol = role === "ADMIN" ? "TELLER" : "ADMIN";
     const response = await fetch(`http://localhost:3001/users/${id}`, {
-      method: "put",
+      method: "PUT",
       headers: {
         "Content-Type": "application/json",
         authorization: "Bearer " + tokenId,
@@ -105,7 +115,11 @@ const Card = ({
       {open ? (
         <div>
           <form className={css.form_container} onSubmit={handlerSubmit}>
+            <div className={css.form_container_name}>
+              <button onClick={() => onClose()}>Cerrar</button>
+            </div>
             <h2>{username}</h2>
+
             <input
               type="text"
               name="phone"
@@ -127,34 +141,48 @@ const Card = ({
               value={userEdit.percent_agreement}
               onChange={handlerPercentChange}
               placeholder="Percent Agreement"
-            />                    
+            />
             <button type="submit">Guardar cambios</button>
           </form>
         </div>
       ) : (
         <div>
           <h2>{username}</h2>
-          <div>
-            <div className={css.data}>
-              <h3>Email:</h3>
-              <h3>{email}</h3>
+          <div className={css.box} >
+            <div className={css.box1}>
+              <h3>Datos de Usuario</h3>
+              <div className={css.data}>
+                <h3>Email:</h3>
+                <h3>{email}</h3>
+              </div>
+              <div className={css.data}>
+                <h3>Telefono:</h3>
+                <h3>{phone}</h3>
+              </div>
+              <div className={css.data}>
+                <h3>Rol:</h3>
+                <h3>{role === 'ADMIN' ? 'ADMINISTRADOR' : 'CAJERO'}</h3>
+              </div>
+              <div className={css.data}>
+                <h3>Porcentaje de acuerdo:</h3>
+                <h3>{percent_agreement}</h3>
+              </div>
+              <div className={css.data}>
+                <h3>Estatus:</h3>
+                <h3>{transformStatus}</h3>
+              </div>
             </div>
-            <div className={css.data}>
-              <h3>Telefono:</h3>
-              <h3>{phone}</h3>
-            </div>
-            <div className={css.data}>
-              <h3>Rol:</h3>
-              <h3>{role}</h3>
-            </div>
-            <div className={css.data}>
-              <h3>Percent Agreement:</h3>
-              <h3>{percent_agreement}</h3>
-            </div>
-            <div className={css.data}>
-              <h3>Estatus:</h3>
-              <h3>{status}</h3>
-            </div>
+         { status === 'INACTIVE' ? null : <div className={css.box2}>
+              <h3>Casinos y creditos</h3>
+              {userCasino?.map((uc) => (
+                <div key={uc.id} className={css.data2}>
+                  <h3>{uc.casino.name}</h3>
+                  <h3>Creditos:{uc.credits}</h3>
+                  <h3>Debitos:{uc.debits}</h3>
+                </div>
+              ))}
+            </div>}
+
             <div className={css.btn}>
               <button onClick={deleteUser}>Eliminar</button>
               <button onClick={blockUser}>Bloquear</button>
