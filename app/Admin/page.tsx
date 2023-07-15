@@ -82,7 +82,7 @@ const openModal =()=> setOpen(!open);
                 </svg>
                 HISTORIAL
               </button>
-              <button className="flex-left">
+              <button className="flex-left" onClick={()=> router.push('/Coins')}> 
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 24 24"

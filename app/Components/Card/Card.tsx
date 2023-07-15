@@ -19,20 +19,17 @@ const Card = ({
     phone,
     email,
     percent_agreement,
-  });
-  console.log(role);
+  }); 
 
-  const state =()=> status
-
-  React.useEffect(() => {
-    state()
-  },[status])
-
-  const estado = state()
   const onClose = () => {
     setOpen(!open);
   };
-  const transformStatus = status === 'INACTIVE'? 'INACTIVO': status === "DISABLED" ? 'BLOQUEADO' : 'ACTIVO'
+  const transformStatus =
+    status === "INACTIVE"
+      ? "INACTIVO"
+      : status === "DISABLED"
+      ? "BLOQUEADO"
+      : "ACTIVO";
 
   const deleteUser = async () => {
     const response = await fetch(`http://localhost:3001/users/${id}`, {
@@ -58,7 +55,7 @@ const Card = ({
       }),
     });
     reload();
-    onCloseTwo(); 
+    onCloseTwo();
   };
   const changeRole = async () => {
     const rol = role === "ADMIN" ? "TELLER" : "ADMIN";
@@ -148,7 +145,7 @@ const Card = ({
       ) : (
         <div>
           <h2>{username}</h2>
-          <div className={css.box} >
+          <div className={css.box}>
             <div className={css.box1}>
               <h3>Datos de Usuario</h3>
               <div className={css.data}>
@@ -161,7 +158,7 @@ const Card = ({
               </div>
               <div className={css.data}>
                 <h3>Rol:</h3>
-                <h3>{role === 'ADMIN' ? 'ADMINISTRADOR' : 'CAJERO'}</h3>
+                <h3>{role === "ADMIN" ? "ADMINISTRADOR" : "CAJERO"}</h3>
               </div>
               <div className={css.data}>
                 <h3>Porcentaje de acuerdo:</h3>
@@ -172,16 +169,18 @@ const Card = ({
                 <h3>{transformStatus}</h3>
               </div>
             </div>
-         { status === 'INACTIVE' ? null : <div className={css.box2}>
-              <h3>Casinos y creditos</h3>
-              {userCasino?.map((uc) => (
-                <div key={uc.id} className={css.data2}>
-                  <h3>{uc.casino.name}</h3>
-                  <h3>Creditos:{uc.credits}</h3>
-                  <h3>Debitos:{uc.debits}</h3>
-                </div>
-              ))}
-            </div>}
+            {status === "INACTIVE" ? null : (
+              <div className={css.box2}>
+                <h3>Casinos y creditos</h3>
+                {userCasino?.map((uc) => (
+                  <div key={uc.id} className={css.data2}>
+                    <h3>{uc.casino.name}</h3>
+                    <h3>Creditos:{uc.credits}</h3>
+                    <h3>Debitos:{uc.debits}</h3>
+                  </div>
+                ))}
+              </div>
+            )}
 
             <div className={css.btn}>
               <button onClick={deleteUser}>Eliminar</button>
