@@ -20,6 +20,11 @@
     flex-wrap: wrap;
     flex-direction: row;
 }
+
+.title img{
+    max-width: 160px;
+}
+
 .boxes{
     display: flex;
     justify-content: center;    
