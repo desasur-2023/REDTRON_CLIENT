@@ -1,3 +1,4 @@
+'use client'
 import React, { useState } from "react";
 import { useUserContext } from "../../UserContext/UserContext";
 import { useCasinosContext } from "../../CasinoContext/CasinoContext";
@@ -6,15 +7,16 @@ const AssignCoins = () => {
   const { userDb } = useUserContext();
   const { casinosDb } = useCasinosContext();
   const tokenId = userDb?.token;
+  const userLoginId = userDb?.id;
   const [usersCasino, setUsersCasino] = useState(null);
   const [input, setInput] = useState({
-    userId: "",
-    amount: "",
+    userCasinoId: "",
+    inflow_qty: "",
   });
   const [idCasino, setIdCasino] = useState({
     id: "",
   });
-  console.log(input.userId);
+  console.log(userDb);
   const getUserCasino = async (casinoId) => {
     try {
       const response = await fetch(
@@ -38,7 +40,7 @@ const AssignCoins = () => {
 
   const postCoins = async (obj: object, token: string) => {
     try {
-      const response = await fetch("http://localhost:3001/coinsMovements", {
+      const response = await fetch(`http://localhost:3001/coinsMovements/coinsInflow/${userLoginId}`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -79,15 +81,14 @@ const AssignCoins = () => {
     event.preventDefault();
     postCoins(input, tokenId);
     setInput({
-      userId: "",
-      amount: "",
+      userCasinoId: "",
+      inflow_qty: "",
     });
   };
 
   return (
     <div onClick={(e) => e.stopPropagation()}>
-      <form>
-        {/* onSubmit={handleSubmit} */}
+      <form onSubmit={handleSubmit}>       
         <h2>Asignar Fichas</h2>
         <label>Casino:</label>
         <select
@@ -106,8 +107,8 @@ const AssignCoins = () => {
         <label>
           Usuario:
           <select
-            name="userId"
-            value={input.userId}
+            name="userCasinoId"
+            value={input.userCasinoId}
             onChange={handleInputChange}
           >
             <option>Seleccionar Usuario</option>
@@ -122,8 +123,8 @@ const AssignCoins = () => {
         <label>Cantidad de fichas:</label>
         <input
           type="number"
-          name="amount"
-          value={input.amount}
+          name="inflow_qty"
+          value={input.inflow_qty}
           min={1}
           onChange={handleInputChange}
         />
