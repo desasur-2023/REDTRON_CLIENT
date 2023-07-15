@@ -19,7 +19,7 @@ const Card = ({
     phone,
     email,
     percent_agreement,
-  }); 
+  });
 
   const onClose = () => {
     setOpen(!open);
@@ -144,50 +144,50 @@ const Card = ({
         </div>
       ) : (
         <div>
-          <h2>{username}</h2>
+          <h1>{username}</h1>
           <div className={css.box}>
             <div className={css.box1}>
-              <h3>Datos de Usuario</h3>
+              <h2>Datos de Usuario</h2>
               <div className={css.data}>
-                <h3>Email:</h3>
-                <h3>{email}</h3>
+                <h3><b>Email:</b></h3>
+                <h4>{email}</h4>
               </div>
               <div className={css.data}>
-                <h3>Telefono:</h3>
-                <h3>{phone}</h3>
+                <h3><b>Telefono:</b></h3>
+                <h4>{phone}</h4>
               </div>
               <div className={css.data}>
-                <h3>Rol:</h3>
-                <h3>{role === "ADMIN" ? "ADMINISTRADOR" : "CAJERO"}</h3>
+                <h3><b>Rol:</b></h3>
+                <h4>{role === "ADMIN" ? "ADMINISTRADOR" : "CAJERO"}</h4>
               </div>
               <div className={css.data}>
-                <h3>Porcentaje de acuerdo:</h3>
-                <h3>{percent_agreement}</h3>
+                <h3><b>Porcentaje de acuerdo:</b></h3>
+                <h4>{percent_agreement}</h4>
               </div>
               <div className={css.data}>
-                <h3>Estatus:</h3>
-                <h3>{transformStatus}</h3>
+                <h3><b>Estatus:</b></h3>
+                <h4>{transformStatus}</h4>
               </div>
             </div>
             {status === "INACTIVE" ? null : (
               <div className={css.box2}>
-                <h3>Casinos y creditos</h3>
+                <h2>Casinos y creditos</h2>
                 {userCasino?.map((uc) => (
                   <div key={uc.id} className={css.data2}>
                     <h3>{uc.casino.name}</h3>
-                    <h3>Creditos:{uc.credits}</h3>
-                    <h3>Debitos:{uc.debits}</h3>
+                    <h4><b>Creditos:</b> {uc.credits}</h4>
+                    <h4><b>Debitos:</b> {uc.debits}</h4>
+                    <br />
                   </div>
                 ))}
               </div>
             )}
-
-            <div className={css.btn}>
-              <button onClick={deleteUser}>Eliminar</button>
-              <button onClick={blockUser}>Bloquear</button>
-              <button onClick={onClose}>Editar</button>
-              <button onClick={changeRole}>Cambiar Rol</button>
-            </div>
+          </div>
+          <div className={css.btn}>
+            <button onClick={deleteUser}>Eliminar</button>
+            <button onClick={blockUser}>Bloquear</button>
+            <button onClick={onClose}>Editar</button>
+            <button onClick={changeRole}>Cambiar Rol</button>
           </div>
         </div>
       )}

@@ -15,6 +15,7 @@
 
 .tri div:hover{
     transform: scale(0.98);
+
 }
 
 .casinos{
@@ -22,4 +23,25 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+.tri div img{
+    border-radius: 100%;
+    border: var(--color-secondary) 6px solid;
+    height: 150px;
+    width: auto;
+    overflow: hidden;
+}
+
+.tri div img:hover{
+    background-color: var(--color-secondary);
+    opacity: 0.7;
+}
+
+.tri h3{
+    font-size: 1em;
+    font-weight: 900;
+    font-style: italic;
+    margin: 10px 0;
+    text-align: center;
 }
